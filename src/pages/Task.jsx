@@ -28,6 +28,103 @@ const dummyTaskList = [
     deadline: new Date(),
     isCompleted: true,
   },
+  {
+    id: 1,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: false,
+  },
+  {
+    id: 2,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: false,
+  },
+  {
+    id: 3,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: true,
+  },
+  {
+    id: 1,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: false,
+  },
+  {
+    id: 2,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: false,
+  },
+  {
+    id: 3,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: true,
+  },
+  {
+    id: 1,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: false,
+  },
+  {
+    id: 2,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: false,
+  },
+  {
+    id: 3,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: true,
+  },
+  {
+    id: 1,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: false,
+  },
+  {
+    id: 2,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: false,
+  },
+  {
+    id: 3,
+    title: "Test Title",
+    description: "Test description",
+    priority: "high",
+    deadline: new Date(),
+    isCompleted: true,
+  },
+
 ];
 
 function Task() {
@@ -71,13 +168,21 @@ function Task() {
   }
 
   const columns = [
-    { title: "Status", key: "status", render:(record)=>{
-        return(
-            <div>
-                {record.isCompleted?<span>Completed</span>:<span></span>}
-            </div>
-        )
-    } },
+    {
+      title: "Status",
+      key: "status",
+      render: (record) => {
+        return (
+          <div>
+            {record.isCompleted ? (
+              <span className="text-green-500">Completed</span>
+            ) : (
+              <span className="text-yellow-500">Pending</span>
+            )}
+          </div>
+        );
+      },
+    },
     { title: "Title", key: "title", dataIndex: "title" },
     {
       title: "Description",
@@ -92,16 +197,23 @@ function Task() {
     {
       title: "Deadline",
       key: "deadline",
-render:(record)=>{
-    return (
-        <span>{record.deadline.toISOString()}</span>
-    )
-}
+      render: (record) => {
+        return <span>{record.deadline.toISOString()}</span>;
+      },
     },
+
   ];
+
+
+
   return (
     <div className="m-10 grid grid-col-5 gap-4">
-      <Table dataSource={dummyTaskList} columns={columns} rowKey={"id"} />
+      <Table
+        dataSource={dummyTaskList}
+        columns={columns}
+        rowKey={"id"}
+        // onChange={(pagination)=>{handlePageChange({pagination})}}
+      />
     </div>
   );
 }
